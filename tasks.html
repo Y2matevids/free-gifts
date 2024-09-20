@@ -8,6 +8,26 @@
     </head>
     <header>
         <h1>FREE GIFTS FOR YOU</h1>
+        <script>
+        function claimGift() {
+            const emailInput = document.getElementById('claimer-email').value;
+            const tasksCompleted = true; // Update this logic to check task completion
+
+            if (!emailInput) {
+                alert("Please complete all tasks before claiming your gift.");
+                return false; // Prevent form submission
+            }
+
+            // You can add additional checks for task completion here
+            if (!tasksCompleted) {
+                alert("Please complete all tasks before claiming your gift.");
+                return false; // Prevent form submission
+            }
+
+            // Redirect to the claiming page if all tasks are complete
+            window.location.href = "REQUESTING RECEIVED.html";
+        }
+    </script>
     </header>
     <body>
         <style>
@@ -79,13 +99,15 @@
           <p>1. Follow us to our faceboook page <a href="https://web.facebook.com/profile.php?id=61566249719323">FOLLOW HERE</a></p>
           <p>2. Subscribe to our YouTube channel <a href="https://www.youtube.com/@How-To-g8w">SUBSCRIBE HERE</a></p>
           <p>3. Watch this video for 3 minutes <a href="https://youtu.be/pU9ckkoblP0?si=EZDtLJB803D-31QR">WATCH VIDEO</a></p>
-          <P>4. Share our website link in 10 facebook groups<a href="">SHARE WEBSITE</a></P>   
-          <p>5. Share this website to 5 WhatsApp groups <a href="">SHARE WEBSITE</a></p>
+          <P>4. Share our website link in 10 facebook groups<a href="https://www.facebook.com/sharer/sharer.php?u=https://dub.sh/free-gifts.com">SHARE WEBSITE</a></P>   
+          <p>5. Share this website to 5 WhatsApp groups <a href="https://api.whatsapp.com/send?text=https://dub.sh/free-gifts.com">SHARE WEBSITE</a></p>
           <b>After completing all tasks, Write your email then click the button to claim gift</b>
-          <form>
-          <label for="email">Write your email below</label>
-          </form>
-          <fieldset><textarea name="email here" id="claimer email"></textarea></fieldset>
-          <a href="REQUESTING RECEIVED.html"><button>CLAIM NOW</button></a>     
+        <form onsubmit="return false;">
+        <label for="claimer-email">Write your email below</label>
+        <textarea id="claimer-email" placeholder="Enter your email here..."></textarea>
+    </form>
+    <button onclick="claimGift()">CLAIM NOW</button>
+</body>
+             
     </body>
 </html>
