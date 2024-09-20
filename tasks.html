@@ -1,113 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Free gifts for you</title>
-        <link rel="stylesheet" href="style.css">
-    </head>
-    <header>
-        <h1>FREE GIFTS FOR YOU</h1>
-        <script>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free gifts for you</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            margin-left: 300px;
+            margin-right: 300px;
+        }
+        header {
+            font-size: 50px;
+            font-family: 'Times New Roman', Times, serif;
+            background-color: pink;
+            text-align: center;
+        }
+        h1 {
+            color: blue;
+        }
+        button {
+            width: 200px;
+            height: 40px;
+            background-color: black;
+            border-radius: 20px;
+            font-size: 25px;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        }
+        h2, p, b {
+            text-align: center;
+            font-family: 'Times New Roman', Times, serif;
+        }
+        textarea {
+            height: 20px;
+            width: 250px;
+        }
+    </style>
+</head>
+<header>
+    <h1>FREE GIFTS FOR YOU</h1>
+    <script>
+        let facebookShares = 0;
+        let whatsappShares = 0;
+
         function claimGift() {
             const emailInput = document.getElementById('claimer-email').value;
-            const tasksCompleted = true; // Update this logic to check task completion
+            const totalShares = facebookShares + whatsappShares;
+            const totalRequired = 10 + 5; // 10 Facebook + 5 WhatsApp
 
-            if (!emailInput) {
-                alert("Please complete all tasks before claiming your gift.");
-                return false; // Prevent form submission
-            }
-
-            // You can add additional checks for task completion here
-            if (!tasksCompleted) {
-                alert("Please complete all tasks before claiming your gift.");
+            if (!emailInput || totalShares < totalRequired) {
+                alert(`Please complete all tasks before claiming your gift.\nYou need ${totalRequired - totalShares} more shares.`);
                 return false; // Prevent form submission
             }
 
             // Redirect to the claiming page if all tasks are complete
-            window.location.href = "REQUESTING RECEIVED.html";
+            window.location.href = "REQUESTING_RECEIVED.html";
+        }
+
+        function updateShares(platform) {
+            if (platform === 'facebook') {
+                facebookShares++;
+            } else if (platform === 'whatsapp') {
+                whatsappShares++;
+            }
+            document.getElementById('share-counter').innerText = `Shares completed: ${facebookShares + whatsappShares} / ${totalRequired}`;
         }
     </script>
-    </header>
-    <body>
-        <style>
-            body{
-                margin-left: 300px;
-                margin-right: 300px;
-            }
-            header{
-                font-size: 50px;
-                font-family: 'Times New Roman', Times, serif;
-                background-color: pink;
-                text-align: center;
-            }
-            h1{
-                color: blue;
-            }
-            button{
-                height: 20px;
-                width: 120px;
-                background-color: black;
-                color: aliceblue;
-                font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-            }
-            h2{
-                text-align: center;
-                font-size: 40px;
-                font-family: Georgia, 'Times New Roman', Times, serif;
-            }
-            p{
-                text-align: center;
-                font-size: 25px;
-                font-family: 'Times New Roman', Times, serif;
-            }
-            b{
-                text-align: center;
-                font-size: 30px;
-                font-family: 'Times New Roman', Times, serif;
-            }
-            fieldset{
-                height: 20px;
-                width: 250px;
-                border-radius: 10px;
-                margin-left: 400px;
-                margin-top: 00px;
-            }
-            label{
-                margin-left: 400px;
-                font-family: 'Times New Roman', Times, serif;
-            }
-            textarea{
-                height: 20px;
-                width: 250px;
-            }
-            form{
-                margin-top: 20px;
-            }
-            button{
-                width: 200px;
-                height: 40px;
-                background-color: black;
-                border-radius: 20px;
-                font-size: 25px;
-                font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-            
-            }
-        </style>
-        <a href="choosing page.html"><button>Back</button></a>
-          <h2>Now your gifts are ready. Complete those simple tasks to claim them</h2>
-          <p>1. Follow us to our faceboook page <a href="https://web.facebook.com/profile.php?id=61566249719323">FOLLOW HERE</a></p>
-          <p>2. Subscribe to our YouTube channel <a href="https://www.youtube.com/@How-To-g8w">SUBSCRIBE HERE</a></p>
-          <p>3. Watch this video for 3 minutes <a href="https://youtu.be/pU9ckkoblP0?si=EZDtLJB803D-31QR">WATCH VIDEO</a></p>
-          <P>4. Share our website link in 10 facebook groups<a href="https://www.facebook.com/sharer/sharer.php?u=https://dub.sh/free-gifts.com">SHARE WEBSITE</a></P>   
-          <p>5. Share this website to 5 WhatsApp groups <a href="https://api.whatsapp.com/send?text=https://dub.sh/free-gifts.com">SHARE WEBSITE</a></p>
-          <b>After completing all tasks, Write your email then click the button to claim gift</b>
-        <form onsubmit="return false;">
+</header>
+<body>
+    <a href="choosing_page.html"><button>Back</button></a>
+    <h2>Now your gifts are ready. Complete those simple tasks to claim them</h2>
+    <p>1. Follow us on our Facebook page <a href="https://web.facebook.com/profile.php?id=61566249719323" onclick="updateShares('facebook')">FOLLOW HERE</a></p>
+    <p>2. Subscribe to our YouTube channel <a href="https://www.youtube.com/@How-To-g8w">SUBSCRIBE HERE</a></p>
+    <p>3. Watch this video for 3 minutes <a href="https://youtu.be/pU9ckkoblP0?si=EZDtLJB803D-31QR">WATCH VIDEO</a></p>
+    <p>4. Share our website link in 10 Facebook groups <a href="https://www.facebook.com/sharer/sharer.php?u=https://dub.sh/free-gifts.com" onclick="updateShares('facebook')">SHARE WEBSITE</a></p>
+    <p>5. Share this website to 5 WhatsApp groups <a href="https://api.whatsapp.com/send?text=https://dub.sh/free-gifts.com" onclick="updateShares('whatsapp')">SHARE WEBSITE</a></p>
+    <b>After completing all tasks, write your email then click the button to claim your gift</b>
+    <div id="share-counter">Shares completed: 0 / 15</div>
+    <form onsubmit="return false;">
         <label for="claimer-email">Write your email below</label>
-        <textarea id="claimer-email" placeholder="Enter your email here..."></textarea>
+        <input type="email" id="claimer-email" placeholder="Enter your email here..." required>
     </form>
     <button onclick="claimGift()">CLAIM NOW</button>
 </body>
-             
-    </body>
 </html>
